@@ -31,6 +31,22 @@ class DFBehatInitCommand extends BehatInitCommand {
 
     $config = $this->readConfig();
 
+    // Use the Mink Extension, if available.
+    if (class_exists('\Behat\MinkExtension\ServiceContainer\MinkExtension')) {
+      unset($config['default']['extensions']['Behat\MinkExtension']['selenium2']);
+
+      $config['default']['extensions']['Behat\MinkExtension']['browser_name'] = 'chrome';
+      $config['default']['extensions']['Behat\MinkExtension']['javascript_session'] = 'default';
+      $config['default']['extensions']['Behat\MinkExtension']['sessions'] = [
+        'default' => [
+          'chrome' => [
+            'api_url' => 'http://localhost:9222',
+          ],
+        ],
+      ];
+      $config['default']['extensions']['DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension'] = NULL;
+    }
+
     // Use the Drupal Extension, if available.
     if (class_exists('\Drupal\DrupalExtension\ServiceContainer\DrupalExtension')) {
       // Use DF-specific message selectors.
