@@ -4,6 +4,7 @@ language: php
 
 cache:
   bundler: true
+  apt: true
   directories:
     - "$HOME/.composer/cache"
     - "$HOME/.drush/cache"
@@ -19,22 +20,11 @@ env:
     - SCENARIO=dfs_dev LIGHTNING=STABLE
     - SCENARIO=dfs_tec LIGHTNING=STABLE
 
-matrix:
-  fast_finish: true
-  allow_failures:
-    - env: SCENARIO=none LIGHTNING=HEAD
-
 addons:
   chrome: stable
 
 before_install:
-  # Add the oauth token to prevent GitHub timeouts.
-  - git config --global github.accesstoken $GITHUB_OAUTH_TOKEN
-
-  # Disable xdebug.
   - phpenv config-rm xdebug.ini
-
-  # Update composer.
   - composer self-update
   - composer --version
 
@@ -65,7 +55,7 @@ install:
   - composer global require phing/phing
 
   # Build the DF code base.
-  - composer install
+  - composer install --ansi
 
   # Download and install Drupal.org drush.
   - drush dl -y drupalorg_drush-7.x-1.x-dev --destination=$HOME/.drush
@@ -80,7 +70,7 @@ install:
   # If a scenario has been specified, enable it.
   - cd docroot
   - drush cache-rebuild
-  - if [[ "$SCENARIO" != none ]]; then travis_wait drush es $SCENARIO; fi
+  - if [[ "$SCENARIO" != none ]]; then drush es $SCENARIO; fi
 
 before_script:
   - drush runserver --default-server=builtin 8080 &>/dev/null &
@@ -91,3 +81,8 @@ script:
   - if [[ "$LIGHTNING" != HEAD ]]; then composer validate ../composer.json --no-check-all --ansi --no-interaction; fi
   - if [[ "$SCENARIO" != none ]]; then behat --strict --stop-on-failure --config ./sites/default/files/behat.yml --tags=df; fi
   - if [[ "$SCENARIO" != none ]]; then behat --strict --stop-on-failure --config ./sites/default/files/behat.yml --tags=$SCENARIO; fi
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: SCENARIO=none LIGHTNING=HEAD
