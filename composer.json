@@ -245,7 +245,7 @@
         "drupal/link_class": "1.3.0",
         "drupal/lite": "1.4.0",
         "drupal/mailsystem": "4.1.0",
-        "drupal/material_admin": "1.x-dev",
+        "drupal/material_admin": "1.x-dev#4d797804cb572f5ef041c8085d00da78a2fdad2d",
         "drupal/media_entity_video": "1.0.0-beta2",
         "drupal/message": "1.0.0-beta2",
         "drupal/message_notify": "1.0.0-beta1",
