@@ -19,7 +19,6 @@ dependencies:
   - dblog
   - df_admin
   - df_core
-  - df_tools
 themes:
   - dfs_base
   - dfs_admin
