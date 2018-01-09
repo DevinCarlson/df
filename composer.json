@@ -119,7 +119,6 @@
         "form elements use '#markup' and are not escaped | https://www.drupal.org/node/2652850": "https://www.drupal.org/files/issues/2652850-17.patch",
         "Field attachments not bubbled when rendering a saved field in Quick Edit | https://www.drupal.org/node/2851332": "https://www.drupal.org/files/issues/quickedit-render-field-attachments.patch",
         "Fatal error when setMainContent() method is not called (block module not installed) | https://www.drupal.org/node/2819219": "https://www.drupal.org/files/issues/core-fatal_error_main_content_block-2819219-2.patch",
-        "Make media name available on manage display | https://www.drupal.org/node/2912298": "https://www.drupal.org/files/issues/core-media-add-name-to-display-2912298-25-after-2883813-27.patch",
         "Invoke hook after a site install is complete | https://www.drupal.org/node/2924549": "https://www.drupal.org/files/issues/core-post-site-install-hook.patch"
       },
       "drupal/adminimal_admin_toolbar":
@@ -207,7 +206,7 @@
   },
   "require":
   {
-    "acquia/lightning": "2.2.3",
+    "acquia/lightning": "2.2.4",
     "doctrine/inflector": "1.1.0",
     "drupal/address": "1.3.0",
     "drupal/addtoany": "1.8.0",
