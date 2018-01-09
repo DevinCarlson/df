@@ -7,4 +7,5 @@ dependencies:
   - df_core
   - config_translation
   - content_translation
+  - df_tools_migration
   - menu_link_content

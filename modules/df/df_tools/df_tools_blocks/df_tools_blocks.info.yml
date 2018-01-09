@@ -15,6 +15,7 @@ dependencies:
   - df_tools_media_video
   - df_tools_migration
   - df_tools_translation
+  - field_group
   - node
   - image
   - image_effects

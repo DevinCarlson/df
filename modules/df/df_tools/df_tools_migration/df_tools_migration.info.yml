@@ -6,4 +6,5 @@ package: Demo Framework Tools
 dependencies:
   - df_core
   - migrate_plus
+  - migrate_tools
   - import
