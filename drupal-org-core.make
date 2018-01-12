@@ -20,4 +20,5 @@ projects[drupal][patch][] = https://www.drupal.org/files/issues/2652850-17.patch
 projects[drupal][patch][] = https://www.drupal.org/files/issues/quickedit-render-field-attachments.patch
 projects[drupal][patch][] = https://www.drupal.org/files/issues/core-fatal_error_main_content_block-2819219-2.patch
 projects[drupal][patch][] = https://www.drupal.org/files/issues/core-post-site-install-hook.patch
+projects[drupal][patch][] = https://www.drupal.org/files/issues/error-entity-without-workflow-2932551-2.patch
 projects[drupal][version] = 8.4.2
