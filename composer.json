@@ -174,12 +174,6 @@
         "PHP Fatal error when adding an action and address is installed | http://drupal.org/node/2694685": "https://www.drupal.org/files/issues/rules-Fix_type_definition_error-2694685-30.patch",
         "Data processors do not check type before performing type-specific operations | https://www.drupal.org/node/2849810": "https://www.drupal.org/files/issues/rules-data-processor-type-checking.patch"
       },
-      "drupal/workbench_moderation":
-      {
-        "Replace the workbench moderation form with a block | https://www.drupal.org/node/2685163": "https://www.drupal.org/files/issues/2685163-21.patch",
-        "The the ability to rearrange the moderation state field | https://www.drupal.org/node/2833892": "https://www.drupal.org/files/issues/workbench_moderation-ability-to-rearrange-field-in-form-2833892-4.patch",
-        "Remove deprecated method call and default hidden field | https://www.drupal.org/node/2879282": "https://www.drupal.org/files/issues/workbench-moderation-deprecated.patch"
-      },
       "drupal/zurb_foundation":
       {
         "Upgrade from layout plugin to Layout API / Layout discovery | https://www.drupal.org/node/2871479": "https://www.drupal.org/files/issues/accommodate-layout-changes-2871479-3.patch"
