@@ -43,3 +43,15 @@ function df_tools_scheduled_updates_form_alter(array &$form) {
     $form['scheduled_update']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function df_tools_scheduled_updates_module_implements_alter(&$implementations, $hook) {
+  // Disable block initialization/inheritance for themes enabled after Lightning
+  // is installed in order to prevent blocks associated with the profile from
+  // bleeding over into scenarios.
+  if ($hook === 'field_widget_form_alter' && isset($implementations['lightning_scheduler'])) {
+    unset($implementations['lightning_scheduler']);
+  }
+}
