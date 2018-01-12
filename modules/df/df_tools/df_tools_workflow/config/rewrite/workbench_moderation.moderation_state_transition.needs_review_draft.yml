@@ -1,7 +1,0 @@
-third_party_settings:
-  workbench_email:
-    workbench_email_templates:
-      draft_ready_for_review: draft_rejected
-  type_style:
-    color: '#EF6C00'
-    icon: edit

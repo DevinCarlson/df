@@ -22,14 +22,14 @@ Feature: Workflow moderation states
 
   @03ebc3ee
   Scenario: Publishing an entity by transitioning it to a published state
-    Given I am logged in as a user with the "view any unpublished content,use draft_needs_review transition,use needs_review_published transition,create page content,edit any page content,create url aliases,access toolbar,use moderation sidebar" permissions
+    Given I am logged in as a user with the "view any unpublished content,use editorial transition review,use editorial transition publish,create page content,edit any page content,create url aliases,access toolbar,use moderation sidebar" permissions
     And page content:
       | title             | path   | moderation_state |
       | Moderation Test 3 | /moderation-test-3 | needs_review     |
     And I visit "/moderation-test-3"
     And I open the moderation sidebar
     And I select the "Edit draft" moderation sidebar link
-    And I select "Published" from "Moderation state"
+    And I select "Published" from "moderation_state[0][state]"
     And I press "Save"
     And I visit "/user/logout"
     And I visit "/moderation-test-3"
@@ -37,7 +37,7 @@ Feature: Workflow moderation states
 
   @c0c17d43
   Scenario: Transitioning published content to an unpublished state
-    Given I am logged in as a user with the "use draft_published transition,use published_archived transition,create page content,edit any page content,create url aliases,access toolbar,use moderation sidebar" permissions
+    Given I am logged in as a user with the "use editorial transition publish,use editorial transition archive,create page content,edit any page content,create url aliases,access toolbar,use moderation sidebar" permissions
     And page content:
       | title             | path   | moderation_state |
       | Moderation Test 4 | /moderation-test-4 | published        |
