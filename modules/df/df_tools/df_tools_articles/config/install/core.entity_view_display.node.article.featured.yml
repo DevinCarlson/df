@@ -42,7 +42,7 @@ content:
   links:
     weight: 3
     region: content
-  workbench_moderation_control:
+  content_moderation_control:
     weight: 0
     settings: {  }
     third_party_settings: {  }

@@ -12,7 +12,7 @@ dependencies:
     - link_class
     - path
     - text
-    - workbench_moderation
+    - content_moderation
 id: node.cta.default
 targetEntityType: node
 bundle: cta

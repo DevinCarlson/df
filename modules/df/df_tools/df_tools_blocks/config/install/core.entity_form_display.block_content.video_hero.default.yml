@@ -11,7 +11,7 @@ dependencies:
   module:
     - entity_browser
     - link
-    - workbench_moderation
+    - content_moderation
 id: block_content.video_hero.default
 targetEntityType: block_content
 bundle: video_hero

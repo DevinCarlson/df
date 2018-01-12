@@ -34,7 +34,7 @@ third_party_settings:
         storage_id: 'node:landing_page:full:default'
         builder: ipe
 content:
-  workbench_moderation_control:
+  content_moderation_control:
     weight: -20
     settings: {  }
     third_party_settings: {  }

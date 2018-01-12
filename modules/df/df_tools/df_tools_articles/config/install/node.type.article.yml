@@ -4,25 +4,15 @@ dependencies:
   module:
     - menu_ui
 third_party_settings:
-  moderation_state:
+  lightning_workflow:
     enabled: true
-    allowed_moderation_states:
-      - draft
-      - needs_review
-      - published
-    default_moderation_state: draft
+    workflow: editorial
   menu_ui:
     available_menus:
       - main
     parent: 'main:'
-  workbench_moderation:
-    enabled: true
-    allowed_moderation_states:
-      - archived
-      - draft
-      - needs_review
-      - published
-    default_moderation_state: draft
+  lightning_workflow:
+    workflow: editorial
   lightning_scheduled_updates:
     embargo: true
   type_style:

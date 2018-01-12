@@ -7,7 +7,7 @@ dependencies:
     - media.type.local_video
   module:
     - file
-    - workbench_moderation
+    - content_moderation
 id: media.local_video.default
 targetEntityType: media
 bundle: local_video

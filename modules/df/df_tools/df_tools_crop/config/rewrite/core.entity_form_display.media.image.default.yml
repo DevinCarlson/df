@@ -1,7 +1,7 @@
 dependencies:
   module:
     - image_widget_crop
-    - workbench_moderation
+    - content_moderation
 content:
   image:
     type: image_widget_crop
