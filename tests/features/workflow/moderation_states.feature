@@ -7,7 +7,7 @@ Feature: Workflow moderation states
   Scenario: Anonymous users should not be able to access content in an unpublished, non-draft state.
     Given page content:
       | title             | path   | moderation_state |
-      | Moderation Test 1 | /moderation-test-1 | needs_review     |
+      | Moderation Test 1 | /moderation-test-1 | review           |
     When I go to "/moderation-test-1"
     Then the response status code should be 403
 
@@ -16,7 +16,7 @@ Feature: Workflow moderation states
     Given I am logged in as a user with the "view any unpublished content" permission
     And page content:
       | title             | path   | moderation_state |
-      | Moderation Test 2 | /moderation-test-2 | needs_review     |
+      | Moderation Test 2 | /moderation-test-2 | review           |
     When I visit "/moderation-test-2"
     Then the response status code should be 200
 
@@ -25,7 +25,7 @@ Feature: Workflow moderation states
     Given I am logged in as a user with the "view any unpublished content,use editorial transition review,use editorial transition publish,create page content,edit any page content,create url aliases,access toolbar,use moderation sidebar" permissions
     And page content:
       | title             | path   | moderation_state |
-      | Moderation Test 3 | /moderation-test-3 | needs_review     |
+      | Moderation Test 3 | /moderation-test-3 | review           |
     And I visit "/moderation-test-3"
     And I open the moderation sidebar
     And I select the "Edit draft" moderation sidebar link
@@ -53,13 +53,15 @@ Feature: Workflow moderation states
     Given I am logged in as a user with the "access content overview" permission
     And page content:
       | title          | moderation_state |
-      | John Cleese    | needs_review     |
-      | Terry Gilliam  | needs_review     |
+      | John Cleese    | review           |
+      | Terry Gilliam  | review           |
       | Michael Palin  | published        |
       | Graham Chapman | published        |
       | Terry Jones    | draft            |
-      | Eric Idle      | needs_review     |
-    When I visit "/admin/content/review"
+      | Eric Idle      | review           |
+    When I visit "/admin/content"
+    And I select "In review" from "moderation_state"
+    And I apply the exposed filters
     Then I should see "John Cleese"
     And I should see "Terry Gilliam"
     And I should not see "Michael Palin"
@@ -67,16 +69,33 @@ Feature: Workflow moderation states
     And I should not see "Terry Jones"
     And I should see "Eric Idle"
 
+#  @6a1db3b1
+#  Scenario: Examining the moderation history of a piece of content
+#    Given I am logged in as a user with the administrator role
+#    And page content:
+#      | title           | moderation_state | path     |
+#      | Samuel L. Ipsum | draft            | /samuel-l-ipsum |
+#    When I visit "/samuel-l-ipsum"
+#    And I open the moderation sidebar
+#    And I select the "Review" moderation sidebar button
+#    And I open the moderation sidebar
+#    And I select the "Publish" moderation sidebar button
+#    And I open the moderation sidebar
+#    And I select the "History" moderation sidebar button
+#    Then I should see "Set to draft"
+#    And I should see "Set to review"
+#    And I should see "Set to published"
+
   @javascript @763fbb2c
   Scenario: Quick edit a forward revision
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the administrator role
     And page content:
-      | title | body   | moderation_state | path   |
-      | Squid | Squid. | published        | /squid |
+      | title | moderation_state | path   |
+      | Squid | published        | /squid |
     When I visit "/squid"
     And I open the moderation sidebar
     And I select the "Create New Draft" moderation sidebar button
-    And I wait for AJAX to finish
+    And I wait 2 seconds
     Then I should see a "system_main_block" block with a "quickedit" contextual link
 
   @35d54919
@@ -89,6 +108,8 @@ Feature: Workflow moderation states
       | Lazy Lummox |
     And I am logged in as a user with the administrator role
     When I visit "admin/content"
+    And I select "- Any -" from "moderation_state"
+    And I apply the exposed filters
     Then I should see "Lazy Lummox"
 
   @084ca18d
@@ -97,8 +118,8 @@ Feature: Workflow moderation states
       | type   | name   |
       | foobar | Foobar |
     And I am logged in as a user with the administrator role
-    When I visit "/admin/structure/types/manage/foobar/moderation"
-    And I check the box "Enable moderation states."
+    When I visit "/admin/config/workflow/workflows/manage/editorial/type/node"
+    And I check the box "bundles[foobar]"
     And I press "Save"
     And I visit "/node/add/foobar"
     Then I should see the "Save" button
@@ -138,8 +159,8 @@ Feature: Workflow moderation states
       | type          | name          |
       | not_moderated | Not Moderated |
     And not_moderated content:
-      | title       | path       |
-      | Deft Zebra  | /deft-zebra |
+      | title      | path        |
+      | Deft Zebra | /deft-zebra |
     And I am logged in as a user with the administrator role
     When I visit "/deft-zebra"
     And I open the moderation sidebar

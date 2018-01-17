@@ -19,7 +19,6 @@ dependencies:
   - menu_ui
   - node
   - path
-  - pathauto
   - panelizer
   - replicate_ui
   - text
