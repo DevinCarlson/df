@@ -232,7 +232,7 @@
     "drupal/field_formatter_class": "1.0.0",
     "drupal/field_group": "1.0.0-rc6",
     "drupal/geocoder": "2.0.0-beta2",
-    "drupal/geofield": "1.0.0-alpha6",
+    "drupal/geofield": "1.0.0-beta1",
     "drupal/geophp": "1.x-dev",
     "drupal/geolocation": "1.x-dev",
     "drupal/google_analytics": "2.2.0",
